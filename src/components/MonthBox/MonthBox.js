@@ -1,22 +1,23 @@
 import React, { useState } from "react";
 import * as dateFns from "date-fns";
-import Dates from "./date";
+import DateRow from "../DateRow";
 
 export default ({ currentMonth }) => {
   const [selectedDate, onDateClick] = useState(0);
+
   const monthStart = dateFns.startOfMonth(currentMonth);
   const monthEnd = dateFns.endOfMonth(monthStart);
   const startDate = dateFns.startOfWeek(monthStart);
   const endDate = dateFns.endOfWeek(monthEnd);
 
   const rows = [];
-
   let days = [];
   let day = startDate;
   let formattedDate = "";
   let formattedMonth = "";
   let formattedYear = "";
   let id = "";
+
   while (day <= endDate) {
     for (let i = 0; i < 7; i++) {
       formattedDate = dateFns.format(day, "d");
@@ -33,22 +34,15 @@ export default ({ currentMonth }) => {
       day = dateFns.addDays(day, 1);
     }
     rows.push(
-      <div className="row" key={day}>
-        {days.map((obj, i) => (
-          <Dates
-            key={i}
-            id={obj.id}
-            day={obj.day}
-            month={obj.month}
-            year={obj.year}
-            selectedDate={selectedDate}
-            onDateClick={onDateClick}
-            status={obj.status}
-          />
-        ))}
-      </div>
+      <DateRow
+        key={day}
+        days={days}
+        selectedDate={selectedDate}
+        onDateClick={onDateClick}
+      />
     );
     days = [];
   }
+
   return <div className="body">{rows}</div>;
 };

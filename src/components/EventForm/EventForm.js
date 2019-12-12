@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
-import { addEvent } from "../redux/actions/eventDispatcher";
 import {
   Input,
   Button,
@@ -47,8 +45,4 @@ const Eventform = ({ modal, toggle, id, day, month, year, addEvent }) => {
   );
 };
 
-const mapDispatchToProps = {
-  addEvent
-};
-
-export default connect(null, mapDispatchToProps)(Eventform);
+export default Eventform;

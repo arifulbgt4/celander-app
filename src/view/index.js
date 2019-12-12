@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import * as dateFns from "date-fns";
 import { Container, Row, Col } from "reactstrap";
-import Week from "../components/week";
-import Dayes from "../components/dayes";
-import Header from "../components/header";
+import Week from "../components/WeeksRow";
+import MonthBox from "../components/MonthBox";
+import Header from "../components/Header";
 
 export default () => {
   const [currentMonth, setMonth] = useState(new Date());
@@ -25,7 +25,7 @@ export default () => {
               nextMonth={nextMonth}
             />
             <Week currentMonth={currentMonth} />
-            <Dayes currentMonth={currentMonth} />
+            <MonthBox currentMonth={currentMonth} />
           </div>
         </Col>
       </Row>

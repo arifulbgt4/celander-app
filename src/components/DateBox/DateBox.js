@@ -1,21 +1,11 @@
 import React, { useState } from "react";
 import * as dateFns from "date-fns";
-import { Badge } from "reactstrap";
-import DragItem from "./dragItem";
 import { useDrop } from "react-dnd";
-import { connect } from "react-redux";
-import EventForm from "./eventForm";
-import { dragEvent } from "../redux/actions/eventDispatcher";
+import EventForm from '../EventForm/';
+import Events from "../Events";
+import DateContent from "./DateContent";
 
-const ListOfEvents = ({ forwardedref, obj }) => (
-  <li ref={forwardedref} className="event-item">
-    <Badge color="primary" size="sm">
-      {obj}
-    </Badge>
-  </li>
-);
-
-const Dates = ({
+export default ({
   id,
   day,
   month,
@@ -29,7 +19,7 @@ const Dates = ({
   const [modal, setModal] = useState(false);
   const [, connectDrop] = useDrop({
     accept: "OBJ",
-    drop(item, monitor) {
+    drop(item) {
       dragEvent(id, item.id, item.objIndex, item.obj);
     }
   });
@@ -88,28 +78,8 @@ const Dates = ({
         month={month}
         year={year}
       />
-      <span className="number">{day}</span>
-      <span className="bg">{day}</span>
-      <ul className="in-clander-event">
-        {eventItems.length > 0 &&
-          eventItems.map((obj, i) => {
-            return (
-              <DragItem id={id} obj={obj} objIndex={i} key={i}>
-                <ListOfEvents obj={obj.title} />
-              </DragItem>
-            );
-          })}
-      </ul>
+      <DateContent day={day} />
+      <Events id={id} eventItems={eventItems} />
     </div>
   );
 };
-const mapStateToprops = state => ({
-  events: state.event.events,
-  shouldUpdateList: state.event.shouldUpdateList
-});
-
-const mapDispatchToProps = {
-  dragEvent
-};
-
-export default connect(mapStateToprops, mapDispatchToProps)(Dates);

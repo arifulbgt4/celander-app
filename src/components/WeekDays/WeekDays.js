@@ -1,5 +1,6 @@
 import React from "react";
 import * as dateFns from "date-fns";
+import Days from "./Days";
 
 export default ({ currentMonth }) => {
   const dateFormat = "ddd";
@@ -8,11 +9,8 @@ export default ({ currentMonth }) => {
 
   for (let i = 0; i < 7; i++) {
     days.push(
-      <div className="col col-center" key={i}>
-        {dateFns.format(dateFns.addDays(startDate, i), dateFormat)}
-      </div>
+      <Days key={i} id={i} startDate={startDate} dateFormat={dateFormat} />
     );
   }
-
-  return <div className="days row">{days}</div>;
+  return days;
 };

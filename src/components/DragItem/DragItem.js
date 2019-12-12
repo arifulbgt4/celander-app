@@ -1,11 +1,11 @@
 import React, { memo, useRef } from "react";
 import { useDrag } from "react-dnd";
 
-const DragItem = memo(({ id,objIndex,obj, children }) => {
+const DragItem = memo(({ id, objIndex, obj, children }) => {
   const ref = useRef(null);
 
   const [{ isDragging }, connectDrag] = useDrag({
-    item: { id,objIndex,obj, type: "OBJ" },
+    item: { id, objIndex, obj, type: "OBJ" },
     collect: monitor => {
       return {
         isDragging: monitor.isDragging()
