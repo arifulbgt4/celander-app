@@ -8,7 +8,7 @@ import {
   ModalFooter
 } from "reactstrap";
 
-const Eventform = ({ modal, toggle, id, day, month, year, addEvent }) => {
+const Eventform = ({ id, modal, toggle, date, addEvent }) => {
   const [title, setTitle] = useState(null);
   const changeHadelar = e => setTitle(e.target.value);
   return (
@@ -23,7 +23,8 @@ const Eventform = ({ modal, toggle, id, day, month, year, addEvent }) => {
       <ModalBody>
         <ul>
           <li>
-            {day} / {month} / {year} - {day} / {month} / {year}
+            {date.format("DD")} /
+            {date.format("MM")}
           </li>
         </ul>
       </ModalBody>

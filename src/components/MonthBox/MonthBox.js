@@ -1,48 +1,36 @@
 import React, { useState } from "react";
-import * as dateFns from "date-fns";
 import DateRow from "../DateRow";
 
 export default ({ currentMonth }) => {
-  const [selectedDate, onDateClick] = useState(0);
-
-  const monthStart = dateFns.startOfMonth(currentMonth);
-  const monthEnd = dateFns.endOfMonth(monthStart);
-  const startDate = dateFns.startOfWeek(monthStart);
-  const endDate = dateFns.endOfWeek(monthEnd);
-
-  const rows = [];
-  let days = [];
-  let day = startDate;
-  let formattedDate = "";
-  let formattedMonth = "";
-  let formattedYear = "";
-  let id = "";
-
-  while (day <= endDate) {
-    for (let i = 0; i < 7; i++) {
-      formattedDate = dateFns.format(day, "d");
-      formattedMonth = dateFns.format(day, "M");
-      formattedYear = dateFns.format(day, "yyy");
-      id = formattedDate + formattedMonth + formattedYear;
-      days.push({
-        id: id,
-        day: formattedDate,
-        month: formattedMonth,
-        year: formattedYear,
-        status: dateFns.isSameMonth(day, monthStart)
-      });
-      day = dateFns.addDays(day, 1);
-    }
-    rows.push(
+  let toDay = new Date().getDate();
+  let toMonth = new Date().getMonth() + 1;
+  let toYear = new Date().getFullYear();
+  const [select, setSelect] = useState(
+    toDay.toString() + toMonth.toString() + toYear.toString()
+  );
+  let weeks = [];
+  let done = false;
+  let date = currentMonth
+    .clone()
+    .startOf("month")
+    .add("w" - 1)
+    .day("Sunday");
+  let count = 0;
+  let monthindex = date.month();
+  while (!done) {
+    weeks.push(
       <DateRow
-        key={day}
-        days={days}
-        selectedDate={selectedDate}
-        onDateClick={onDateClick}
+        key={date}
+        date={date.clone()}
+        currentMonth={currentMonth}
+        select={select}
+        onDateClick={setSelect}
       />
     );
-    days = [];
+    date.add(1, "w");
+    done = count++ > 2 && monthindex !== date.month();
+    monthindex = date.month();
   }
 
-  return <div className="body">{rows}</div>;
+  return <div className="body">{weeks}</div>;
 };

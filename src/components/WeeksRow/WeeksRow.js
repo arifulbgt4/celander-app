@@ -1,10 +1,15 @@
 import React from "react";
-import WeekDays from "../WeekDays";
 
-export default ({ currentMonth }) => {
+export default () => {
   return (
     <div className="days row">
-      <WeekDays currentMonth={currentMonth} />
+      <div className="col col-center">Sun</div>
+      <div className="col col-center">Mon</div>
+      <div className="col col-center">Tue</div>
+      <div className="col col-center">Wed</div>
+      <div className="col col-center">Thu</div>
+      <div className="col col-center">Fri</div>
+      <div className="col col-center">Sat</div>
     </div>
   );
 };

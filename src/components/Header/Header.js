@@ -1,8 +1,7 @@
 import React from "react";
-import * as dateFns from "date-fns";
 
 export default ({ currentMonth, prevMonth, nextMonth }) => {
-  const dateFormat = "MMMM yyyy";
+  const dateFormat = "MMMM YYYY";
   return (
     <div className="header row flex-middle">
       <div className="col col-start">
@@ -11,7 +10,7 @@ export default ({ currentMonth, prevMonth, nextMonth }) => {
         </div>
       </div>
       <div className="col col-center">
-        <span>{dateFns.format(currentMonth, dateFormat)}</span>
+        <span>{currentMonth.format(dateFormat)}</span>
       </div>
       <div className="col col-end" onClick={nextMonth}>
         <div className="icon">chevron_right</div>
