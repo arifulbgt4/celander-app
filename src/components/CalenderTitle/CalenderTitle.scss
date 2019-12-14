@@ -1,0 +1,39 @@
+.calender-title {
+  border: 1px solid #ddd;
+  line-height: 40px;
+  .title-btn-area {
+    overflow: hidden;
+    .icon {
+      font-family: "Material Icons", serif;
+      font-style: normal;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      -moz-osx-font-smoothing: grayscale;
+      font-feature-settings: "liga";
+      border: none;
+      outline: none;
+      cursor: pointer;
+      display: block;
+      transition: 0.15s ease-out;
+      background: transparent;
+      &:hover {
+        transform: scale(1.75);
+        transition: 0.25s ease-out;
+        color: #1a8fff;
+      }
+    }
+  }
+
+  .title-date {
+    span {
+      text-transform: capitalize;
+      font-weight: 500;
+      color: #666;
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import React from "react";
-import { Button, ListGroup, ListGroupItem } from "reactstrap";
+import { Button, ListGroup, ListGroupItem, Row, Col } from "reactstrap";
+import CalenderTitle from "../CalenderTitle";
 
 export default ({
   currentMonth,
@@ -9,21 +10,19 @@ export default ({
   nextWeek,
   weekViwe,
   weekView,
-  monthView
+  monthView,
+  currentWeek
 }) => {
-  const dateFormat = "MMMM YYYY";
+  function prev() {
+    !weekViwe ? prevMonth() : prevWeek();
+  }
+  function next() {
+    !weekViwe ? nextMonth() : nextWeek();
+  }
   return (
-    <div className="header row flex-middle">
-      <div className="col col-start">
-        <div
-          className="icon"
-          onClick={() => {
-            !weekViwe ? prevMonth() : prevWeek();
-          }}
-        >
-          chevron_left
-        </div>
-        <ul>
+    <div className="header">
+      <Row>
+        <Col lg={4}>
           <ListGroup>
             <ListGroupItem>
               <Button
@@ -46,21 +45,18 @@ export default ({
               </Button>
             </ListGroupItem>
           </ListGroup>
-        </ul>
-      </div>
-      <div className="col col-center">
-        <span>{currentMonth.format(dateFormat)}</span>
-      </div>
-      <div className="col col-end">
-        <div
-          className="icon"
-          onClick={() => {
-            !weekViwe ? nextMonth() : nextWeek();
-          }}
-        >
-          chevron_right
-        </div>
-      </div>
+        </Col>
+        <Col lg={4}>
+          <CalenderTitle
+            week={currentWeek}
+            view={weekViwe}
+            months={currentMonth}
+            prev={prev}
+            next={next}
+          />
+        </Col>
+        <Col lg={4}></Col>
+      </Row>
     </div>
   );
 };

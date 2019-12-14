@@ -116,6 +116,7 @@ class Celander extends Component {
                 weekView={this.weekView}
                 monthView={this.monthView}
                 weekViwe={weekViwe}
+                currentWeek={currentWeek}
               />
               <WeekDaysRow />
               <MonthBox
