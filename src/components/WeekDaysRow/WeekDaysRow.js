@@ -1,15 +1,56 @@
 import React from "react";
+import { Row, Col } from "reactstrap";
+import "./WeekDaysRow.scss";
 
-export default () => {
+export default ({ view, week }) => {
+  const weeks = week.clone();
   return (
-    <div className="days row">
-      <div className="col col-center">Sun</div>
-      <div className="col col-center">Mon</div>
-      <div className="col col-center">Tue</div>
-      <div className="col col-center">Wed</div>
-      <div className="col col-center">Thu</div>
-      <div className="col col-center">Fri</div>
-      <div className="col col-center">Sat</div>
-    </div>
+    <Row className="wek-days-name">
+      <Col className="text-center">
+        <span>{view ? weeks.format("ddd, MMM ") + weeks.date() : "Sun"} </span>
+      </Col>
+      <Col className="text-center">
+        <span>
+          {view
+            ? weeks.add(1, "day").format("ddd, MMM ") + weeks.date()
+            : "Mon"}
+        </span>
+      </Col>
+      <Col className="text-center">
+        <span>
+          {view
+            ? weeks.add(1, "day").format("ddd, MMM ") + weeks.date()
+            : "Tue"}
+        </span>
+      </Col>
+      <Col className="text-center">
+        <span>
+          {view
+            ? weeks.add(1, "day").format("ddd, MMM ") + weeks.date()
+            : "Wed"}
+        </span>
+      </Col>
+      <Col className="text-center">
+        <span>
+          {view
+            ? weeks.add(1, "day").format("ddd, MMM ") + weeks.date()
+            : "Thu"}
+        </span>
+      </Col>
+      <Col className="text-center">
+        <span>
+          {view
+            ? weeks.add(1, "day").format("ddd, MMM ") + weeks.date()
+            : "Fri"}
+        </span>
+      </Col>
+      <Col className="text-center">
+        <span>
+          {view
+            ? weeks.add(1, "day").format("ddd, MMM ") + weeks.date()
+            : "Fri"}
+        </span>
+      </Col>
+    </Row>
   );
 };

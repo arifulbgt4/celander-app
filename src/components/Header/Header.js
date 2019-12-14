@@ -1,6 +1,8 @@
 import React from "react";
-import { Button, ListGroup, ListGroupItem, Row, Col } from "reactstrap";
+import { Row, Col } from "reactstrap";
 import CalenderTitle from "../CalenderTitle";
+import ViewTypeButton from "../ViewTypeButton";
+import "./Header.scss";
 
 export default ({
   currentMonth,
@@ -20,43 +22,24 @@ export default ({
     !weekViwe ? nextMonth() : nextWeek();
   }
   return (
-    <div className="header">
-      <Row>
-        <Col lg={4}>
-          <ListGroup>
-            <ListGroupItem>
-              <Button
-                onClick={() => {
-                  !weekViwe && weekView();
-                }}
-                color="primary"
-              >
-                Week
-              </Button>
-            </ListGroupItem>
-            <ListGroupItem>
-              <Button
-                onClick={() => {
-                  weekViwe && monthView();
-                }}
-                color="primary"
-              >
-                Month
-              </Button>
-            </ListGroupItem>
-          </ListGroup>
-        </Col>
-        <Col lg={4}>
-          <CalenderTitle
-            week={currentWeek}
-            view={weekViwe}
-            months={currentMonth}
-            prev={prev}
-            next={next}
-          />
-        </Col>
-        <Col lg={4}></Col>
-      </Row>
-    </div>
+    <Row className="header">
+      <Col className="align-self-center" lg={4}>
+        <ViewTypeButton
+          view={weekViwe}
+          weekView={weekView}
+          monthView={monthView}
+        />
+      </Col>
+      <Col lg={4}>
+        <CalenderTitle
+          week={currentWeek}
+          view={weekViwe}
+          months={currentMonth}
+          prev={prev}
+          next={next}
+        />
+      </Col>
+      <Col lg={4}></Col>
+    </Row>
   );
 };

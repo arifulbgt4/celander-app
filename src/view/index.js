@@ -105,20 +105,20 @@ class Celander extends Component {
     return (
       <Container>
         <Row>
-          <Col md={12}>
+          <Col sm={12}>
+            <Header
+              currentMonth={currentMonth}
+              prevMonth={this.prevMonth}
+              nextMonth={this.nextMonth}
+              prevWeek={this.prevWeek}
+              nextWeek={this.nextWeek}
+              weekView={this.weekView}
+              monthView={this.monthView}
+              weekViwe={weekViwe}
+              currentWeek={currentWeek}
+            />
+            <WeekDaysRow view={weekViwe} week={currentWeek} />
             <div className="calendar">
-              <Header
-                currentMonth={currentMonth}
-                prevMonth={this.prevMonth}
-                nextMonth={this.nextMonth}
-                prevWeek={this.prevWeek}
-                nextWeek={this.nextWeek}
-                weekView={this.weekView}
-                monthView={this.monthView}
-                weekViwe={weekViwe}
-                currentWeek={currentWeek}
-              />
-              <WeekDaysRow />
               <MonthBox
                 weekViwe={weekViwe}
                 currentWeek={currentWeek}
