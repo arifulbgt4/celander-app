@@ -8,7 +8,7 @@ export default ({ id, eventItems }) => {
     eventItems.map((obj, i) => {
       return (
         <DragItem id={id} obj={obj} objIndex={i} key={i}>
-          <EventItem obj={obj.title} />
+          <EventItem title={obj.provider} />
         </DragItem>
       );
     })

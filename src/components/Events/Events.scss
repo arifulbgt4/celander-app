@@ -1,0 +1,20 @@
+.in-clander-event {
+  display: block;
+  padding: 0;
+  margin: 0;
+  .event-item {
+    list-style: none;
+    display: block;
+    margin-bottom: 3px;
+    position: relative;
+    z-index: 999;
+    span {
+      background: #1a8fff;
+      color: #fff;
+      font-weight: 400;
+      padding: 2px 5px;
+      font-size: 14px;
+      text-transform: capitalize;
+    }
+  }
+}

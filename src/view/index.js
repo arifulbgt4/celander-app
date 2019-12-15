@@ -118,13 +118,11 @@ class Celander extends Component {
               currentWeek={currentWeek}
             />
             <WeekDaysRow view={weekViwe} week={currentWeek} />
-            <div className="calendar">
-              <MonthBox
-                weekViwe={weekViwe}
-                currentWeek={currentWeek}
-                currentMonth={currentMonth}
-              />
-            </div>
+            <MonthBox
+              weekViwe={weekViwe}
+              currentWeek={currentWeek}
+              currentMonth={currentMonth}
+            />
           </Col>
         </Row>
       </Container>

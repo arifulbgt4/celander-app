@@ -1,8 +1,9 @@
 import React from "react";
 import DateBox from "../DateBox";
+import { Row } from "reactstrap";
+import "./DateRow.scss";
 
-export default ({ date, currentMonth,select ,onDateClick}) => {
-
+export default ({ date, currentMonth, select, onDateClick, view }) => {
   let days = [];
   for (let i = 0; i < 7; i++) {
     let day = {
@@ -14,20 +15,22 @@ export default ({ date, currentMonth,select ,onDateClick}) => {
     days.push(
       <DateBox
         key={day.number}
-        isToday={day.isToday}
         date={date}
         number={day.number}
         isCurrentMont={day.isCurrentMont}
         select={select}
         onDateClick={onDateClick}
+        months={currentMonth}
+        view={view}
+        isToday={day.isToday}
       />
     );
     date = date.clone();
     date.add(1, "day");
   }
   return (
-    <div className="row" key={days[0]}>
+    <Row key={days[0]} className="date-row">
       {days}
-    </div>
+    </Row>
   );
 };

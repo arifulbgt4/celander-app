@@ -5,132 +5,19 @@
 
 /* VARIABLES */
 
-$main-color: #1a8fff;
-$text-color: #777;
-$text-color-light: #ccc;
-$border-color: #eee;
-$bg-color: #f9f9f9;
-$neutral-color: #fff;
-
+// $main-color: #1a8fff;
+// $text-color: #777;
+// $text-color-light: #ccc;
+// $border-color: #eee;
+// $bg-color: #f9f9f9;
+// $neutral-color: #1a8fff;
 
 body {
   font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-size: 1em;
   font-weight: 300;
   line-height: 1.5;
-  color: $text-color;
-  background: $bg-color;
+  color: #777;
+  background:#f9f9f9;
   position: relative;
-}
-
-/* GRID */
-
-/* Calendar */
-.calendar {
-  display: block;
-  position: relative;
-  width: 100%;
-  background: $neutral-color;
-  border: 1px solid $border-color;
-  // .header {
-  //   text-transform: uppercase;
-  //   font-weight: 700;
-  //   font-size: 115%;
-  //   padding: 1.5em 0;
-  //   border-bottom: 1px solid $border-color;
-  // }
-  .days {
-    text-transform: uppercase;
-    font-weight: 400;
-    color: $text-color-light;
-    font-size: 70%;
-    padding: 0.75em 0;
-    border-bottom: 1px solid $border-color;
-    .cell {
-      position: relative;
-      height: 5em;
-      border-right: 1px solid $border-color;
-      overflow: hidden;
-      cursor: pointer;
-      background: $neutral-color;
-      transition: 0.25s ease-out;
-      &:hover {
-        background: $bg-color;
-        transition: 0.5s ease-out;
-      }
-    }
-  }
-  .body {
-    .selected {
-      border-left: 10px solid transparent;
-      border-image: linear-gradient(45deg, #1a8fff 0%, #53cbf1 40%);
-      border-image-slice: 1;
-      .bg {
-        opacity: 0.05;
-        transition: 0.5s ease-in;
-      }
-    }
-    .row {
-      border-bottom: 1px solid $border-color;
-      &:last-child {
-        border-bottom: none;
-      }
-    }
-    .cell {
-      position: relative;
-      height: 5em;
-      border-right: 1px solid $border-color;
-      overflow: hidden;
-      cursor: pointer;
-      background: $neutral-color;
-      transition: 0.25s ease-out;
-      &:last-child {
-        border-right: none;
-      }
-      .number {
-        position: absolute;
-        font-size: 82.5%;
-        line-height: 1;
-        top: 0.75em;
-        right: 0.75em;
-        font-weight: 700;
-      }
-      .bg {
-        font-weight: 700;
-        line-height: 1;
-        color: $main-color;
-        opacity: 0;
-        font-size: 8em;
-        position: absolute;
-        top: -0.2em;
-        right: -0.05em;
-        transition: 0.25s ease-out;
-        letter-spacing: -0.07em;
-      }
-      &:hover {
-        .bg {
-          opacity: 0.05;
-          transition: 0.5s ease-in;
-        }
-      }
-    }
-    .disabled {
-      color: $text-color-light;
-      pointer-events: none;
-    }
-    .col {
-      flex-grow: 0;
-      flex-basis: calc(100% / 7);
-      width: calc(100% / 7);
-      .in-clander-event {
-        position: relative;
-        z-index: 999;
-        margin-left: 0;
-        padding: 0;
-        li {
-          list-style: none;
-        }
-      }
-    }
-  }
 }

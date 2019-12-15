@@ -3,16 +3,19 @@ import { useDrop } from "react-dnd";
 import EventForm from "../EventForm/";
 import Events from "../Events";
 import DateContent from "./DateContent";
+import "./DateBox.scss";
 
 export default ({
-  isToday,
   onDateClick,
   select,
   isCurrentMont,
   events,
   dragEvent,
   number,
-  date
+  date,
+  months,
+  view,
+  isToday
 }) => {
   let id =
     date.date().toString() +
@@ -51,16 +54,16 @@ export default ({
     });
   return (
     <div
-      className={`col cell ${
+      className={`col date-col ${
         !isCurrentMont ? "disabled" : select === id ? "selected" : ""
-      }`}
+      } ${isToday && "today"}`}
       ref={connectDrop}
       onClick={() => {
         onDateClick(id);
         toggleModal();
       }}
     >
-      <EventForm id={id} modal={modal} toggle={toggleModal} date={date} />
+      <EventForm id={id} modal={modal} toggle={toggleModal} months={months} />
       <DateContent day={number} />
       <Events id={id} eventItems={eventItems} />
     </div>

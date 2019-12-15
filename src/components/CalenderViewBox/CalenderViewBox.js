@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import DateRow from "../DateRow";
+import "./CalenderViewBox.scss";
 
 export default ({ currentMonth, weekViwe, currentWeek }) => {
   let toDay = new Date().getDate();
@@ -40,8 +41,9 @@ export default ({ currentMonth, weekViwe, currentWeek }) => {
         currentMonth={currentMonth}
         select={select}
         onDateClick={setSelect}
+        view={weekViwe}
       />
     );
   }
-  return <div className="body">{weeks}</div>;
+  return <div className="calendar-box">{weeks}</div>;
 };
